@@ -6,5 +6,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./servers.component.css']
 })
 export class ServersComponent {
+  allowNewServer=false;
+  serverCreationStatus = 'Nenhum servidor criado até o momento.';
+  serverName='';
 
+  constructor(){
+    setTimeout(() => {this.allowNewServer=true}, 2000);
+  }
+
+  onCreateServer(){
+    this.serverCreationStatus = 'Servidor criado com sucesso!';
+  }
+
+  onInputServerName(event: Event){
+    this.serverName=(<HTMLInputElement>event.target).value;
+  }
 }

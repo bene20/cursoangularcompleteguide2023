@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class ServersComponent {
   allowNewServer=false;
   serverCreationStatus = 'Nenhum servidor criado até o momento.';
-  serverName='';
+  serverName='Sem nome';
 
   constructor(){
     setTimeout(() => {this.allowNewServer=true}, 2000);

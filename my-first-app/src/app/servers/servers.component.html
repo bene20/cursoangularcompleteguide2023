@@ -8,10 +8,20 @@
        [(ngModel)]="serverName">       
 {{ serverName }}
 <hr/>
+<div class="container">
+    <div class="row">
+        <label>User name:</label>
+        <input type="text" class="form-control" [(ngModel)]="username" >
+        <p>{{ username }}</p>
+        <button class="btn btn-primary" (click)="clearUserName()"
+        [disabled]="clearUsernameDisabled()" >Clear username</button>
+    </div>
+</div>
+<hr/>
 <button id="btn01"
-    class="btn btn-primary" 
-    [disabled]="!allowNewServer"
-    (click)="onCreateServer()">Add Server</button>
+class="btn btn-primary" 
+[disabled]="!allowNewServer"
+(click)="onCreateServer()">Add Server</button>
 <p>{{ serverCreationStatus }}</p>
 <app-server></app-server>
 <app-server></app-server>

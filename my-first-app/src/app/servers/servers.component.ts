@@ -9,6 +9,7 @@ export class ServersComponent {
   allowNewServer=false;
   serverCreationStatus = 'Nenhum servidor criado até o momento.';
   serverName='Sem nome';
+  username='';
 
   constructor(){
     setTimeout(() => {this.allowNewServer=true}, 2000);
@@ -20,5 +21,13 @@ export class ServersComponent {
 
   onInputServerName(event: Event){
     this.serverName=(<HTMLInputElement>event.target).value;
+  }
+
+  clearUserName(){
+    this.username='';
+  }
+
+  clearUsernameDisabled(){
+    return !(this.username && this.username.length > 0);
   }
 }

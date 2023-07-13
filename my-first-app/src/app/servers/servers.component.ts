@@ -3,7 +3,11 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-servers',
   templateUrl: './servers.component.html',
-  styleUrls: ['./servers.component.css']
+  styles: [`
+    .online {
+      color: white
+    }
+  `]
 })
 export class ServersComponent {
   allowNewServer=false;
@@ -22,7 +26,7 @@ export class ServersComponent {
   }
 
   getColor(){
-    return this.serverStatus == 'online' ? 'green':'red';
+    return this.serverStatus == 'online' ? 'green':'red'; 
   }
 
   onInputServerName(event: Event){

@@ -10,13 +10,19 @@ export class ServersComponent {
   serverCreationStatus = 'Nenhum servidor criado até o momento.';
   serverName='Sem nome';
   username='';
+  serverStatus='offline';
 
   constructor(){
     setTimeout(() => {this.allowNewServer=true}, 2000);
+    this.serverStatus = Math.random() > 0.5 ? 'online':'offline'; 
   }
 
   onCreateServer(){
-    this.serverCreationStatus = 'Servidor criado com sucesso!';
+    this.serverCreationStatus = 'Servidor criado com sucesso! It is '+this.serverStatus;
+  }
+
+  getColor(){
+    return this.serverStatus == 'online' ? 'green':'red';
   }
 
   onInputServerName(event: Event){

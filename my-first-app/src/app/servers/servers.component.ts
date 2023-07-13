@@ -3,30 +3,22 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-servers',
   templateUrl: './servers.component.html',
-  styles: [`
-    .online {
-      color: white
-    }
-  `]
+  styleUrls: ['./servers.component.css']
 })
 export class ServersComponent {
   allowNewServer=false;
   serverCreationStatus = 'Nenhum servidor criado até o momento.';
   serverName='Sem nome';
+  servers = ['Production server', 'Homologation server'];
   username='';
-  serverStatus='offline';
 
   constructor(){
     setTimeout(() => {this.allowNewServer=true}, 2000);
-    this.serverStatus = Math.random() > 0.5 ? 'online':'offline'; 
   }
 
   onCreateServer(){
-    this.serverCreationStatus = 'Servidor criado com sucesso! It is '+this.serverStatus;
-  }
-
-  getColor(){
-    return this.serverStatus == 'online' ? 'green':'red'; 
+    this.servers.push(this.serverName)
+    this.serverCreationStatus = 'Servidor criado com sucesso!';
   }
 
   onInputServerName(event: Event){

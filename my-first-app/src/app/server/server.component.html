@@ -1,1 +1,4 @@
-<h2>Servidor ID {{ serverId }} está {{ serverStatus }}</h2>
+<h2 [ngStyle]="{backgroundColor:getColor()}"
+[ngClass]="{online: serverStatus === 'online'}">
+  Servidor ID {{ serverId }} está {{ serverStatus }}
+</h2>

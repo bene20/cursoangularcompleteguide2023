@@ -11,6 +11,8 @@ export class ServersComponent {
   serverName='Sem nome';
   servers = ['Production server', 'Homologation server'];
   username='';
+  showDetail=false;
+  exibicoesDetalhe=[];
 
   constructor(){
     setTimeout(() => {this.allowNewServer=true}, 2000);
@@ -31,5 +33,16 @@ export class ServersComponent {
 
   clearUsernameDisabled(){
     return !(this.username && this.username.length > 0);
+  }
+
+  mostraDetalhe(){
+    if(!this.showDetail){
+      this.exibicoesDetalhe.push({
+        id: 1+this.exibicoesDetalhe.length,
+        data: new Date()
+      });
+    }
+    this.showDetail=!this.showDetail;
+    console.log(this.exibicoesDetalhe);
   }
 }

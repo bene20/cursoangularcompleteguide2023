@@ -29,8 +29,8 @@ class="btn btn-primary"
 (click)="mostraDetalhe()">Exibir detalhe</button>
 <div *ngIf="showDetail">
     <p>A senha secretá é 'abc@123'</p>
-    <div *ngFor="let exibicao of exibicoesDetalhe">
-        <p [ngClass]="{exibicoes5: exibicao.id > 4}">Exibição {{exibicao.id}} feita em {{exibicao.data}}</p>
+    <div *ngFor="let exibicao of exibicoesDetalhe; let i=index">
+        <div [ngClass]="{exibicoes5:i>4, multiplo3:i%3==0}">Exibição {{i}} feita em {{exibicao.data}}</div>
 </div>
 </div>
 <hr/>

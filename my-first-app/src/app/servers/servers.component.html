@@ -1,11 +1,11 @@
 <label>Server name:</label>
-<!-- <input type="text"
-       class="form-control"
-       (input)="onInputServerName($event)"> -->
-
 <input type="text"
        class="form-control"
-       [(ngModel)]="serverName">       
+       (input)="onInputServerName($event)">
+
+<!-- <input type="text"
+       class="form-control"
+       [(ngModel)]="serverName">        -->
 {{ serverName }}
 <hr/>
 <div class="container">
@@ -13,17 +13,22 @@
         <label>User name:</label>
         <input type="text" class="form-control" [(ngModel)]="username" >
         <p>{{ username }}</p>
-        <button class="btn btn-primary" (click)="clearUserName()"
-        [disabled]="clearUsernameDisabled()" >Clear username</button>
+        <button class="btn btn-primary" 
+            (click)="clearUserName()"
+            [disabled]="clearUsernameDisabled()" >Clear username</button>
     </div>
 </div>
+
 <hr/>
 <button id="btn01"
 class="btn btn-primary" 
 [disabled]="!allowNewServer"
 (click)="onCreateServer()">Add Server</button>
 <p>{{ serverCreationStatus }}</p>
-<app-server *ngFor="let server of servers"></app-server>
+<app-server *ngFor="let server of servers"
+[serverElement]="server"
+></app-server>
+
 <hr/>
 <button class="btn btn-primary"
 (click)="mostraDetalhe()">Exibir detalhe</button>
@@ -33,4 +38,5 @@ class="btn btn-primary"
         <div [ngClass]="{exibicoes5:i>4, multiplo3:i%3==0}">Exibição {{i}} feita em {{exibicao.data}}</div>
 </div>
 </div>
+
 <hr/>

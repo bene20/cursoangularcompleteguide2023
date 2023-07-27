@@ -1,4 +1,5 @@
 <h2 [ngStyle]="{backgroundColor:getColor()}"
-[ngClass]="{online: serverStatus === 'online'}">
-  Servidor ID {{ serverId }} está {{ serverStatus }}
+[ngClass]="{online: element.serverStatus === 'online'}">
+  Servidor {{element.serverName}} (ID {{ element.serverId }}) ::: {{ element.serverStatus }}
+  <button class="btn btn-primary" (click)="changeStatus()">Change status</button>
 </h2>

@@ -9,7 +9,7 @@ export class ServersComponent {
   allowNewServer=false;
   serverCreationStatus = 'Nenhum servidor criado até o momento.';
   serverName='Sem nome';
-  servers = ['Production server', 'Homologation server'];
+  servers:[{serverId: number, serverName: string, serverStatus: string}] = [{serverId: 1, serverName: 'Nome 1', serverStatus: Math.random() > 0.5 ? 'online' : 'offline'}];
   username='';
   showDetail=false;
   exibicoesDetalhe=[];
@@ -19,11 +19,12 @@ export class ServersComponent {
   }
 
   onCreateServer(){
-    this.servers.push(this.serverName)
+    this.servers.push({serverId: this.servers.length+1, serverName: this.serverName, serverStatus: Math.random() > 0.5 ? 'online' : 'offline'})
     this.serverCreationStatus = 'Servidor criado com sucesso!';
   }
 
   onInputServerName(event: Event){
+    console.log('Mudando serverName para ' + this.serverName);
     this.serverName=(<HTMLInputElement>event.target).value;
   }
 

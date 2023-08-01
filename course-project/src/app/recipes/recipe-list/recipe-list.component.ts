@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Recipe } from '../recipe.model';
 
 @Component({
@@ -7,6 +7,8 @@ import { Recipe } from '../recipe.model';
   styleUrls: ['./recipe-list.component.css']
 })
 export class RecipeListComponent {
+  @Output() recipeWasSelected = new EventEmitter<Recipe>();
+
   recipes: Recipe[] = [
     new Recipe('Carne ao molho', 'Carne suculenta ao molho de ervas', 'https://p2.trrsf.com/image/fget/cf/774/0/images.terra.com/2020/11/12/cozido-musculo-pressao-768x512.jpg'),
     new Recipe('Mousse de chocolate', 'Macio e zero lactose', 'https://catracalivre.com.br/wp-content/uploads/2022/03/img-8857.jpg'),
@@ -14,4 +16,7 @@ export class RecipeListComponent {
     new Recipe('Panqueca de carne moída', 'Um prato barato, simples e rápido', 'https://www.mariareceita.com.br/wp-content/uploads/2022/03/receita-panquecas-carne-moida.jpg'),
   ];
 
+  onRecipeSelected(recipe: Recipe){
+    this.recipeWasSelected.emit(recipe);
+  }
 }

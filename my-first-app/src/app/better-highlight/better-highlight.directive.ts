@@ -5,22 +5,18 @@ import { Directive, ElementRef, HostBinding, HostListener, OnInit, Renderer2 } f
 })
 export class BetterHighlightDirective implements OnInit{
 
-  constructor(private elementRef: ElementRef, private renderer: Renderer2) { }
+  @HostBinding('style.backgroundColor') backgroundColor:string = 'transparent';
+
+  constructor(private elementRef: ElementRef) { }
 
   ngOnInit(): void {}
 
   @HostListener('mouseenter') mouseentrando(eventData: Event) {
-    this.renderer.setStyle(
-      this.elementRef.nativeElement,
-      'background-color',
-      'red');
+    this.backgroundColor = 'blue';
   }
 
   @HostListener('mouseleave') mousesaindo(eventData: Event) {
-    this.renderer.setStyle(
-      this.elementRef.nativeElement,
-      'background-color',
-      'transparent');
+    this.backgroundColor = 'transparent';
   }
 
 }

@@ -1,6 +1,9 @@
+import { EventEmitter } from "@angular/core";
 import { Recipe } from "./recipe.model";
 
 export class RecipeService {
+    recipeSelected = new EventEmitter<Recipe>();
+
     private recipes: Recipe[] = [
         new Recipe('Carne ao molho', 'Carne suculenta ao molho de ervas', 'https://p2.trrsf.com/image/fget/cf/774/0/images.terra.com/2020/11/12/cozido-musculo-pressao-768x512.jpg'),
         new Recipe('Mousse de chocolate', 'Macio e zero lactose', 'https://catracalivre.com.br/wp-content/uploads/2022/03/img-8857.jpg'),

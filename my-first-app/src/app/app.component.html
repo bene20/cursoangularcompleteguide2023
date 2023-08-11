@@ -2,8 +2,8 @@
     <div class="row">
         <div class="col-xs-12">
             <h3>Eu estou no App Component!</h3>
-            <p appBasicHighlight>Diretiva basic-highlight</p>
-            <p appBetterHighlight>Diretiva better-highlight</p>
+            <p appBetterHighlight [defaultColor]="'yellow'" [highLightColor]="'green'">Diretiva better-highlight - Uso 1</p>
+            <p appBetterHighlight defaultColor="yellow" highLightColor="green">Diretiva better-highlight - Uso 1</p>
             <p *appUnless="false">Usando a diretiva Unless</p>
             <hr/>
             <app-servers></app-servers>

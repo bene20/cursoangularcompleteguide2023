@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ServersService } from '../servers.service';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
   selector: 'app-server',
@@ -12,7 +12,8 @@ export class ServerComponent implements OnInit {
   server: {id: number, name: string, status: string};
 
   constructor(private serversService: ServersService,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private router: Router) { }
 
   ngOnInit() {
     this.updateServer(this.route.snapshot.params); 
@@ -25,6 +26,13 @@ export class ServerComponent implements OnInit {
     // o '+' abaixo converte o string em número
     const idServer = +params['id']; 
     this.server = this.serversService.getServer(idServer);
+  }
+
+  onEdit(){
+    // Na linha abaixo uso a rota relativa (adicionando apenas o 'edit' na url, em vez de usar a rota absoluta.)
+    // Como seria a rota absoluta: this.router.navigate(['/servers', this.server.id, 'edit']);
+    // this.router.navigate(['edit'], {relativeTo: this.route, queryParamsHandling: 'preserve'});
+    this.router.navigate(['edit'], {relativeTo: this.route, queryParamsHandling: 'preserve'});
   }
 
 }
